@@ -2,6 +2,11 @@ body{
     margin: 0;
 }
 
+header{
+    z-index: 0;
+}
+
+
 nav{
     height: 13vh;
     background-color: rgb(238, 238, 238);
@@ -32,13 +37,13 @@ nav{
     vertical-align: middle;
 }
 
-.menu{
+.menu_icon{
     right: 0;
     margin-right: 8%;
 }
 
 .fa-bars{
-    font-size: 45px;
+    font-size: 40px;
     color: rgb(65, 65, 65);
     vertical-align: middle;
 
@@ -48,30 +53,165 @@ nav{
 
 
 
-.menu_options{
+.menu{
     height: 100vh;
     background-color: #b8c6db;
     background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
     position: relative;
+    z-index: 10;
 }
 
-.options{
+.menu_options{
     display: inline-block;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    user-select: none;
 }
 
-h3:not(:last-child){
-    margin: 0 0 30px 0;
+.menu_option:not(:last-child){
+    margin: 0 0 80px 0;
 }
 
-h3:last-child{
+.menu_option:last-child{
     margin: 0;
 }
 
-h3{
+.menu_option{
+    font-family: 'Raleway', sans-serif;
     font-size: 35px;
     text-align: center;
+    color: rgb(65, 65, 65);
 }
+
+.menu_option:active{
+    color: #f12711; /* fallback for old browsers */
+    color: -webkit-linear-gradient(to right, #f12711, #f5af19); /* Chrome 10-25, Safari 5.1-6 */
+    color: linear-gradient(to right, #f12711, #f5af19); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.animate_menu_down{
+    animation: slide-bottom 0.3s ease-out forwards;
+
+}
+
+
+  @keyframes slide-bottom {
+    0% {
+              transform: translateY(-999px);
+    }
+    100% {
+              transform: translateY(0);
+    }
+  }
+
+  .fa-arrow-up{
+      font-size: 40px;
+      padding: 5%;
+      color: rgb(83, 83, 83);
+    }
+    .fa-arrow-up:active{
+        color: #f12711; /* fallback for old browsers */
+        color: -webkit-linear-gradient(to right, #f12711, #f5af19); /* Chrome 10-25, Safari 5.1-6 */
+        color: linear-gradient(to right, #f12711, #f5af19); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    
+
+.animate_menu_up{
+    animation: slide-top 0.3s ease-out forwards;
+
+}
+
+
+  @keyframes slide-top {
+    0% {
+              transform: translateY(0);
+    }
+    100% {
+              transform: translateY(-999px);
+    }
+  }
+
+  /*  grid   */
+
+  .book_container{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+      padding: 20px;
+      margin-top: 3vh;
+  }
+
+  .add_book{
+      background-color: rgb(235, 235, 235);
+      border: 4px dashed #C2C2C2;
+      height: 35vh;
+  }
+
+  .add_book_text{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-weight: 600;
+    font-size: 35px;
+    color: #969696;
+    margin-bottom: 15px;
+    user-select: none;
+  }
+
+  .plus_circle{
+      text-align: center;
+      color: #969696;
+      font-size: 45px;
+      margin: 0;
+  }
+
+
+  .form_book_info{
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+  }
+
+  
+.book_title_placeholder{
+    position: absolute;
+    top: 2px;
+    left: 10px;
+    color: rgb(170, 170, 170);
+    animation: placeholder-animate 0.3 forwards;
+    pointer-events: none;
+}
+
+
+#book_title{
+    border: none;
+    border-bottom: 4px rgb(60, 207, 226) solid ;
+    width: 100%;
+    font-size: 25px;
+    margin-bottom: 20px;
+    outline: none;
+    
+}
+
+.active{
+    color: tomato;
+}
+ 
+
+  /*
+  
+  LATER
+
+  img{
+      width: 100%;
+      height: 100%;
+  }
+
+  .book_card:hover{
+      filter: brightness(0.5);
+  }
+
+  */
