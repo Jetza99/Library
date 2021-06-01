@@ -176,29 +176,72 @@ nav{
   }
 
   
-.book_title_placeholder{
+.input_container{
+    position: relative;
+}
+
+.placeholder_style{
     position: absolute;
     top: 2px;
     left: 10px;
     color: rgb(170, 170, 170);
-    animation: placeholder-animate 0.3 forwards;
+    font-family: 'Raleway', sans-serif;
     pointer-events: none;
 }
 
 
-#book_title{
+
+
+
+.input_box{
+    box-sizing: border-box;
     border: none;
     border-bottom: 4px rgb(60, 207, 226) solid ;
     width: 100%;
-    font-size: 25px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 45px;
+    padding: 0 10px 10px;
     outline: none;
     
 }
 
-.active{
-    color: tomato;
+.book_cover_box{
+    font-size: 12px;
 }
+
+.active{
+    animation: slide-top 0.3s ease-out forwards;
+}
+
+.inactive{
+    animation: slide-down 0.3s ease-out forwards;
+
+}
+
+
+
+  @keyframes slide-top {
+    0% {
+              transform: translateY(0) scale(1);
+    }
+    100% {
+              transform:  translateY(-25px) scale(0.9);
+              
+    }
+  }
+
+
+  @keyframes slide-down {
+    0% {
+              transform:  translateY(-25px) scale(0.9);
+
+    }
+    100% {
+              transform: translateY(0) scale(1);
+              
+    }
+  }
+  
  
 
   /*

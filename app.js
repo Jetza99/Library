@@ -1,17 +1,24 @@
+//main body elements
 const body = document.querySelector("body");
 const header = document.querySelector("header");
 const main = document.querySelector("main");
-const menuBtn = document.querySelector(".menu_icon");
 
+//hamburger menu elements
+const menuBtn = document.querySelector(".menu_icon");
 const menu = document.createElement("div");
 const menuOptions = document.createElement("div");
 const option1 = document.createElement("h3");
 const option2 = document.createElement("h3");
 const arrowUp = document.createElement("i");
 
-const bookPlace = document.querySelector(".book_title_placeholder");
+//form elements
+const bookPlaceholder = document.querySelector(".book_title_placeholder");
+const inputBoxs = document.querySelectorAll(".input_box");
 
 
+//variables
+let selectedInput = "";
+let test;
 
 //BRING MENU
 
@@ -73,12 +80,50 @@ addBookCard.addEventListener("mouseout", () => {
     addBookCard.style.border = "4px dashed #C2C2C2";
 });
 
-const bookTitleInput = document.querySelector("#book_title");
+
+
 
 
 function inputFocus(){
-    bookPlace.classList.add("active");
+
+    selectedInput = document.activeElement;
+    test = document.querySelector(`.${selectedInput.getAttribute("name")}`);
+
+
+        if(test.classList.contains("inactive")){
+            test.classList.remove("inactive");
+            test.classList.add("active");
+        }else{
+        test.classList.add("active");
+
+        }
+
+        console.log(test);
+
+}
+function inputBlur(){
+    
+    if(!selectedInput.value){
+        
+        test.classList.remove("active");
+        test.classList.add("inactive");
+        
+    }
+
+    selectedInput.setSelectionRange(0, 0);
+    console.log();
+
+    
+
+    
+
 }
 
 
+
+/*
+function inputClick(){
+    
+}
+*/
 

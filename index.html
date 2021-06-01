@@ -46,14 +46,33 @@
 
 
     <form class="form_book_info" action="">
-        <label class="book_title_placeholder" for="book title">Book Title</label>
-        <input type="text" id="book_title" name="booktitle" onfocus="inputFocus()"><br>
-        <label for="author">Author:</label><br>
-        <input type="text" id="author" name="author"><br>
-        <label for="pages">Number of pages:</label><br>
-        <input type="text" id="pages" name="pages"><br>
-        <label for="img">Book cover link:</label>
-        <input type="text" id="img" name="img"><br>
+        <div class="input_container">
+            <label class="placeholder_style book_title_placeholder" for="book title">Book Title</label>
+            <input type="text" class="input_box" name="book_title_placeholder" autocomplete="off" 
+            onfocus="inputFocus()" onblur="inputBlur()"><br>
+        </div>
+
+
+        <div class="input_container">
+            <label class="placeholder_style author_placeholder" for="author">Author</label>
+            <input type="text" class="input_box" name="author_placeholder" autocomplete="off" 
+            onfocus="inputFocus()" onblur="inputBlur()"><br>
+        </div>
+
+        <div class="input_container">
+            <label class="placeholder_style num_pages_placeholder" for="author">Number Of Pages</label>
+            <input type="text" class="input_box" name="num_pages_placeholder" autocomplete="off" 
+            onfocus="inputFocus()" onblur="inputBlur()"><br>
+        </div>
+
+        <div class="input_container">
+            <label class="placeholder_style book_cover_placeholder" for="author">Book Cover Link</label>
+            <input type="text" class="input_box book_cover_box" name="book_cover_placeholder" autocomplete="off" 
+            onfocus="inputFocus()" onblur="inputBlur()"><br>
+        </div>
+
+
+    
 
  
 
