@@ -150,6 +150,15 @@ nav{
       margin-top: 3vh;
   }
 
+  .book_card{
+      background-color: rgb(226, 226, 226);
+      height: 32vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+  }
+
   .add_book{
       background-color: rgb(235, 235, 235);
       border: 4px dashed #C2C2C2;
@@ -439,19 +448,22 @@ nav{
     }
   }
   
- 
-
-  /*
   
-  LATER
 
-  img{
+  .book_cover{
       width: 100%;
       height: 100%;
   }
 
-  .book_card:hover{
-      filter: brightness(0.5);
+  .empty_book_cover{
+      width: 65%;
+      height: 65%;
+      filter: invert(93%) sepia(2%) saturate(1079%) hue-rotate(205deg) brightness(116%) contrast(52%);
+
   }
 
-  */
+  .book_card:hover{
+      filter: brightness(0.8);
+  }
+
+  

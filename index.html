@@ -13,6 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Rozha+One&display=swap" rel="stylesheet"> 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">         <link rel="stylesheet" href="style.css">
+        <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
         <script src="https://kit.fontawesome.com/f91b009431.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -43,6 +44,7 @@
         </div>
     </div>
     
+    
 
 
     <div class="form_container">
@@ -51,27 +53,27 @@
 
             <div class="input_container">
                 <label class="placeholder_style book_title_placeholder" for="book title">Book Title</label>
-                <input type="text" class="input_box" name="book_title_placeholder" autocomplete="off" 
-                onfocus="inputFocus()" onblur="inputBlur()"><br>
+                <input type="text" id="title" class="input_box" name="book_title_placeholder" autocomplete="off" 
+                onfocus="inputFocus()" onblur="inputBlur()" required><br>
             </div>
     
     
             <div class="input_container">
                 <label class="placeholder_style author_placeholder" for="author">Author</label>
-                <input type="text" class="input_box" name="author_placeholder" autocomplete="off" 
-                onfocus="inputFocus()" onblur="inputBlur()"><br>
+                <input type="text" id="author" class="input_box" name="author_placeholder" autocomplete="off" 
+                onfocus="inputFocus()" onblur="inputBlur()" required><br>
             </div>
     
             <div class="input_container">
                 <label class="placeholder_style num_pages_placeholder" for="author">Number Of Pages</label>
-                <input type="text" class="input_box" name="num_pages_placeholder" autocomplete="off" 
-                onfocus="inputFocus()" onblur="inputBlur()"><br>
+                <input type="text" id="num-pages" class="input_box" name="num_pages_placeholder" autocomplete="off" 
+                onfocus="inputFocus()" onblur="inputBlur()" required><br>
             </div>
     
             <div class="input_container">
                 <label class="placeholder_style book_cover_placeholder" for="author">Book Cover Link 
                     <span id="optional">(optional)</span></label>
-                <input type="text" class="input_box book_cover_box" name="book_cover_placeholder" autocomplete="off" 
+                <input type="text" id="cover-link" class="input_box book_cover_box" name="book_cover_placeholder" autocomplete="off" 
                 onfocus="inputFocus()" onblur="inputBlur()"><br>
             </div>
     
@@ -94,7 +96,7 @@
     
             </div>
                 
-        <input type="button" class="add_btn" value="Add Book">
+        <input type="submit" class="add_btn" value="Add Book">
            
         </form>
     </div>
