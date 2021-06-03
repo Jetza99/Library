@@ -12,16 +12,30 @@ const option2 = document.createElement("h3");
 const arrowUp = document.createElement("i");
 
 //form elements
+const formModal = document.querySelector(".form_container");
 const bookPlaceholder = document.querySelector(".book_title_placeholder");
 const inputBoxs = document.querySelectorAll(".input_box");
+
+//grid elements
+const addBookCard = document.querySelector(".add_book");
+const addBookText = document.querySelector(".add_book_text");
+const plusCircle = document.querySelector(".plus_circle");
+const closeBtn = document.querySelector(".close");
+
+
+
 
 
 //variables
 let selectedInput = "";
-let test;
+let selectedLabel;
+
+
+
+
+
 
 //BRING MENU
-
 menuBtn.addEventListener("click", () => {
     menu.classList.add("menu");
     menu.classList.add("animate_menu_down");
@@ -57,16 +71,14 @@ arrowUp.addEventListener("click", () => {
         menu.classList.remove("animate_menu_up");
 
         body.removeChild(menu);
-    }, 300);
+    }, 250);
 
 });
 
 
 
 //A LITTLE HOVER ANIMATION ON ADD A BOOK CARD
-const addBookCard = document.querySelector(".add_book");
-const addBookText = document.querySelector(".add_book_text");
-const plusCircle = document.querySelector(".plus_circle");
+
 
 addBookCard.addEventListener("mouseover", () => {
     addBookText.style.color = "#2b2b2b";
@@ -83,47 +95,46 @@ addBookCard.addEventListener("mouseout", () => {
 
 
 
-
+//ONFOCUS AND ONBLUR FUNCTIONS FOR THE INPUTs
 function inputFocus(){
 
     selectedInput = document.activeElement;
-    test = document.querySelector(`.${selectedInput.getAttribute("name")}`);
+    selectedLabel = document.querySelector(`.${selectedInput.getAttribute("name")}`);
 
-
-        if(test.classList.contains("inactive")){
-            test.classList.remove("inactive");
-            test.classList.add("active");
+        if(selectedLabel.classList.contains("inactive")){
+            selectedLabel.classList.remove("inactive");
+            selectedLabel.classList.add("active");
         }else{
-        test.classList.add("active");
+        selectedLabel.classList.add("active");
 
         }
 
-        console.log(test);
-
 }
+
 function inputBlur(){
     
     if(!selectedInput.value){
+        selectedLabel.classList.remove("active");
+        selectedLabel.classList.add("inactive");
+        selectedInput.style.borderBottom = "4px rgb(207, 207, 207) solid";
         
-        test.classList.remove("active");
-        test.classList.add("inactive");
-        
+    }else{
+        selectedInput.style.borderBottom = "4px rgb(60, 207, 226) solid";
     }
-
     selectedInput.setSelectionRange(0, 0);
-    console.log();
-
-    
-
-    
 
 }
 
 
 
-/*
-function inputClick(){
-    
-}
-*/
+
+
+addBookCard.addEventListener("click", ()=>{
+    formModal.style.display = "inline-block";
+});
+
+closeBtn.addEventListener("click", ()=>{
+    formModal.style.display = "none";
+
+});
 

@@ -2,6 +2,12 @@ body{
     margin: 0;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 header{
     z-index: 0;
 }
@@ -120,7 +126,7 @@ nav{
     
 
 .animate_menu_up{
-    animation: slide-top 0.3s ease-out forwards;
+    animation: slide-top 0.3s forwards;
 
 }
 
@@ -147,8 +153,10 @@ nav{
   .add_book{
       background-color: rgb(235, 235, 235);
       border: 4px dashed #C2C2C2;
-      height: 35vh;
+      height:  auto;
+      padding-bottom: 10%;
   }
+
 
   .add_book_text{
     font-family: 'Raleway', sans-serif;
@@ -165,16 +173,64 @@ nav{
       color: #969696;
       font-size: 45px;
       margin: 0;
+
   }
 
+
+  .form_container{
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: change-bg 0.4s forwards;
+  }
+
+  @keyframes change-bg {
+      to{
+        background-color: rgba(0, 0, 0, 0.253);
+      }
+  }
 
   .form_book_info{
       position: absolute;
       top: 0;
       left: 50%;
-      transform: translate(-50%, 50%);
-  }
+      transform: translate(-50%, 10%);
+      width: 90%;
+      padding: 15% 10% 5% 10%;
+      background-color: white;
+      box-shadow: 0px 0px 16px -6px rgba(20,20,20,1);
 
+      animation: bring-forward 0.2s forwards;
+}
+
+
+@keyframes bring-forward {
+    from{
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 10%) scale(0);
+    }
+    to{
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 10%) scale(1);
+
+    }
+}
+
+
+.fa-times{
+    font-size: 25px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: rgb(100, 100, 100);
+    padding: 3% 5%;
+    z-index: 1;
+}
   
 .input_container{
     position: relative;
@@ -190,19 +246,18 @@ nav{
 }
 
 
-
-
-
 .input_box{
-    box-sizing: border-box;
     border: none;
-    border-bottom: 4px rgb(60, 207, 226) solid ;
+    border-bottom: 4px rgb(207, 207, 207) solid ;
     width: 100%;
     font-size: 20px;
     margin-bottom: 45px;
     padding: 0 10px 10px;
     outline: none;
-    
+}
+
+.input_box:focus{
+    animation: focus 0.2s ease-in forwards;
 }
 
 .book_cover_box{
@@ -210,17 +265,159 @@ nav{
 }
 
 .active{
-    animation: slide-top 0.3s ease-out forwards;
+    animation: slide-top-txt 0.3s ease-out forwards;
 }
 
 .inactive{
-    animation: slide-down 0.3s ease-out forwards;
+    animation: slide-down-txt 0.3s ease-out forwards;
 
+}
+
+#optional{
+    font-size: 14px;
+}
+
+
+.radio_container{
+    display: inline-block;
+    margin-top: 50px;
+    padding: 0 10% 0 10%;
+}
+
+.no_container{
+    position: absolute;
+    right: 0;
+}
+
+.radio_label{
+    font-size: 25px;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    color: rgb(170, 170, 170);
+    font-family: 'Raleway', sans-serif;
+}
+
+
+#yes, #no{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.radio_btn{
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: #eee;
+    align-self: center;
+    position: relative;
+}
+
+.radio_btn:hover{
+    background-color: #ccc;
+}
+
+#yes:checked ~ .radio_btn, #no:checked ~ .radio_btn{
+    background-color: rgb(47, 137, 255);
+
+}
+
+.radio_btn::after{
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+#yes:checked ~ .radio_btn::after{
+    display: block;
+}
+
+#no:checked ~ .radio_btn::after{
+    display: block;
 }
 
 
 
-  @keyframes slide-top {
+.radio_btn::after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+
+
+
+
+.add_btn{
+    margin-top: 12%;
+    background-color: white;
+    border: 2px solid rgb(60, 207, 226);
+    padding: 10px 20px; 
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
+    color: rgb(60, 207, 226);
+    font-weight: 600;
+    animation: out 0.2s ease-out forwards;
+    border-radius: 8px;
+}
+
+.add_btn:hover{
+    animation: in 0.2s ease-in forwards;
+}
+
+.add_btn:active{
+    animation: in 0.2s ease-in forwards;
+}
+
+
+
+
+
+
+@keyframes focus {
+    from{
+
+    }
+    to{
+        border-bottom: 4px rgb(60, 207, 226) solid ;
+
+    }
+}
+
+
+@keyframes in {
+    from{
+        background-color: white;
+        color: rgb(60, 207, 226);
+    }
+    to{
+        background-color: rgb(60, 207, 226);
+        color: white;
+    }
+}
+
+
+@keyframes out {
+    from{
+        background-color: rgb(60, 207, 226);
+        color: white;
+    }
+    to{
+
+        background-color: white;
+        color: rgb(60, 207, 226);
+    }
+}
+
+
+  @keyframes slide-top-txt {
     0% {
               transform: translateY(0) scale(1);
     }
@@ -231,7 +428,7 @@ nav{
   }
 
 
-  @keyframes slide-down {
+  @keyframes slide-down-txt {
     0% {
               transform:  translateY(-25px) scale(0.9);
 
