@@ -23,7 +23,7 @@ const addBookCard = document.querySelector(".add_book");
 const addBookText = document.querySelector(".add_book_text");
 const plusCircle = document.querySelector(".plus_circle");
 const closeBtn = document.querySelector(".close");
-
+const testingBtn = document.querySelector(".info");
 
 
 
@@ -31,6 +31,7 @@ const closeBtn = document.querySelector(".close");
 //variables
 let selectedInput = "";
 let selectedLabel;
+let bookArr = [];
 
 
 
@@ -132,17 +133,20 @@ function inputBlur(){
 
 
 
-
+//BRING FORM
 addBookCard.addEventListener("click", ()=>{
     formModal.style.display = "inline-block";
 
 });
 
+//CLOSE FORM
 closeBtn.addEventListener("click", ()=>{
     formModal.style.display = "none";
 
 });
 
+
+//ADD BOOK INFORMATION INTO OBJECT AND INSERT IT INTO GRID WITH IMG
 addBookBtn.addEventListener("click", ()=> { 
     const emptyBookIcon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjQ1OS4zMTlweCIgaGVpZ2h0PSI0NTkuMzE5cHgiIHZpZXdCb3g9IjAgMCA0NTkuMzE5IDQ1OS4zMTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ1OS4zMTkgNDU5LjMxOTsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZD0iTTk0LjkyNCwzNjYuNjc0aDMxMi44NzRjMC45NTgsMCwxLjg4Ni0wLjEzNiwyLjc3OC0wLjM0OWMwLjA3MSwwLDAuMTMsMC4wMTIsMC4yMDEsMC4wMTINCgkJYzYuNjc5LDAsMTIuMTA1LTUuNDIsMTIuMTA1LTEyLjEwNFYxMi4xMDVDNDIyLjg4Myw1LjQyMyw0MTcuNDU2LDAsNDEwLjc3NywwaC0yLjk1NUgxMTQuMjg0SDk0Ljk0MQ0KCQljLTMyLjIyLDAtNTguNDI4LDI2LjIxNC01OC40MjgsNTguNDI1YzAsMC40MzIsMC4wODUsMC44NDIsMC4xMjcsMS4yNTljLTAuMDQyLDI5Ljc1NS0wLjQxMSwzMDMuMTY2LTAuMDQyLDMzOS4xMDkNCgkJYy0wLjAyMywwLjcwMy0wLjEwOSwxLjM4OS0wLjEwOSwyLjA5OWMwLDMwLjk3MywyNC4yNTIsNTYuMzI5LDU0Ljc1Nyw1OC4yNDVjMC42MTIsMC4wOTQsMS4yMTIsMC4xODMsMS44NDcsMC4xODNoMzE3LjY4Mw0KCQljNi42NzksMCwxMi4xMDUtNS40MiwxMi4xMDUtMTIuMTA1di00NS41NjVjMC02LjY4LTUuNDI3LTEyLjEwNS0xMi4xMDUtMTIuMTA1cy0xMi4xMDUsNS40MjYtMTIuMTA1LDEyLjEwNXYzMy40NjFIOTQuOTI0DQoJCWMtMTguMzk1LDAtMzMuNDExLTE0LjYwNS0zNC4xNDktMzIuODE3YzAuMDE4LTAuMzI1LDAuMDc3LTAuNjMyLDAuMDcxLTAuOTYzYy0wLjAxMi0wLjUzMi0wLjAzLTEuMzU5LTAuMDQyLTIuNDU5DQoJCUM2MS44NjIsMzgwLjk0OCw3Ni43MzksMzY2LjY3NCw5NC45MjQsMzY2LjY3NHogTTEwMy4xNzgsNTguNDI1YzAtNi42ODIsNS40MjMtMTIuMTA1LDEyLjEwNS0xMi4xMDVzMTIuMTA1LDUuNDIzLDEyLjEwNSwxMi4xMDUNCgkJVjMwNC4zMWMwLDYuNjc5LTUuNDIzLDEyLjEwNS0xMi4xMDUsMTIuMTA1cy0xMi4xMDUtNS40MjctMTIuMTA1LTEyLjEwNVY1OC40MjV6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==';
     let book;
@@ -154,10 +158,13 @@ addBookBtn.addEventListener("click", ()=> {
 
    /* if(checkEntries(title, author, numPages)){*/
         book = new Book(title, author, numPages, coverLink, hasRead);
-        console.log(book.coverLink);
+        bookArr.push(book);
 
   /*  }*/
 
+    let infoCard = document.createElement("div");
+    let infoIcon = document.createElement("i");
+    let trashIcon = document.createElement("i");
 
     let bookCard = document.createElement("div");
     let bookCover = document.createElement("img");
@@ -169,13 +176,25 @@ addBookBtn.addEventListener("click", ()=> {
     }else{
         bookCover.setAttribute("src", `${emptyBookIcon}`);
         bookCover.classList.add("empty_book_cover");
-
     }
+    infoCard.classList.add("info_btns");
+
+    infoIcon.classList.add("fas");
+    infoIcon.classList.add("fa-info-circle");
+
+    trashIcon.classList.add("fas");
+    trashIcon.classList.add("fa-trash-alt");
+
     bookCard.classList.add("book_card");
 
 
+    infoCard.appendChild(infoIcon);
+    infoCard.appendChild(trashIcon);
+    bookCard.appendChild(infoCard);
     bookCard.appendChild(bookCover);
     bookContainer.insertBefore(bookCard, bookContainer.firstElementChild.nextSibling);
+
+    test();
 
 
 });
@@ -189,6 +208,7 @@ function Book(title, author, numPages, coverLink, hasRead){
     this.hasRead = hasRead
 }
 
+//RETURN IF THE BOOK HAVE BEEN READ OR NOT
 function checkResponse(){
     const responses = document.querySelectorAll("input[type='radio']");
 
@@ -203,6 +223,7 @@ function checkResponse(){
 
 }
 
+//VALIDATE ENTRIES
 function checkEntries(title, author, numPages){
     if(title.length > 1 && author.length > 1 && numPages > 1 && !isNaN(numPages)){
         return true;
@@ -210,5 +231,47 @@ function checkEntries(title, author, numPages){
         return false;
     }
 }
+
+
+function test(){
+
+//window.addEventListener("mouseover", ()=>{
+  //  if(bookArr.length >= 1){    
+    
+            
+    const infoCards = document.querySelectorAll(".info_btns");
+
+    infoCards.forEach(infoCard => infoCard.addEventListener("mouseover", ()=>{
+        infoCard.style.opacity = "1";
+    }));
+
+    infoCards.forEach(infoCard => infoCard.addEventListener("mouseout", ()=>{
+        infoCard.style.opacity = "0";
+    }));        
+    
+
+    infoCards.forEach(infoCard => infoCard.addEventListener("click", (e)=>{
+        
+
+    })); 
+
+    window.addEventListener("click", (e)=>{
+        console.log(e.target.parentNode);
+        if(e.target.parentNode.classList[0] == "info_btns" || e.target.parentNode.classList[0] == "book_card"){
+            infoCards.forEach(infoCard => infoCard.style.opacity = "1");
+        }else if(e.target.parentNode.classList[0] != "info_btns" || e.target.parentNode.classList[0] != "book_card"){
+            infoCards.forEach(infoCard => infoCard.style.opacity = "0");
+
+        }
+    });
+   
+
+// }
+//});
+}
+
+
+
+
 
 
