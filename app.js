@@ -13,6 +13,7 @@ const arrowUp = document.createElement("i");
 
 //form elements
 const formModal = document.querySelector(".form_container");
+const form = document.querySelector(".form_book_info");
 const bookPlaceholder = document.querySelector(".book_title_placeholder");
 const inputBoxs = document.querySelectorAll(".input_box");
 const addBookBtn = document.querySelector(".add_btn");
@@ -136,14 +137,17 @@ function inputBlur(){
 //BRING FORM
 addBookCard.addEventListener("click", ()=>{
     formModal.style.display = "inline-block";
+    body.style.position = "fixed";
 
 });
 
 //CLOSE FORM
 closeBtn.addEventListener("click", ()=>{
     formModal.style.display = "none";
+    body.style.position = "";
 
 });
+
 
 
 //ADD BOOK INFORMATION INTO OBJECT AND INSERT IT INTO GRID WITH IMG
@@ -155,12 +159,15 @@ addBookBtn.addEventListener("click", ()=> {
     let numPages = document.querySelector("#num-pages").value;
     let coverLink = document.querySelector("#cover-link").value;
     let hasRead = checkResponse();
+    let bookId = generateBookId();
 
    /* if(checkEntries(title, author, numPages)){*/
-        book = new Book(title, author, numPages, coverLink, hasRead);
+        book = new Book(title, author, numPages, coverLink, hasRead, bookId);
         bookArr.push(book);
 
   /*  }*/
+
+  
 
     let infoCard = document.createElement("div");
     let infoIcon = document.createElement("i");
@@ -181,9 +188,14 @@ addBookBtn.addEventListener("click", ()=> {
 
     infoIcon.classList.add("fas");
     infoIcon.classList.add("fa-info-circle");
+    infoIcon.classList.add("info");
+    infoIcon.classList.add(`${book.bookId}`);
+
 
     trashIcon.classList.add("fas");
     trashIcon.classList.add("fa-trash-alt");
+    trashIcon.classList.add("trash");
+
 
     bookCard.classList.add("book_card");
 
@@ -194,18 +206,23 @@ addBookBtn.addEventListener("click", ()=> {
     bookCard.appendChild(bookCover);
     bookContainer.insertBefore(bookCard, bookContainer.firstElementChild.nextSibling);
 
-    test();
+    manageInfoCard();
+    formModal.style.display = "none";
+    body.style.position = "";
 
+    form.reset();
+    inputBlur();
 
 });
 
 
-function Book(title, author, numPages, coverLink, hasRead){
+function Book(title, author, numPages, coverLink, hasRead, bookId){
     this.title = title
     this.author = author
     this.numPages = numPages
     this.coverLink = coverLink
     this.hasRead = hasRead
+    this.bookId = bookId
 }
 
 //RETURN IF THE BOOK HAVE BEEN READ OR NOT
@@ -233,13 +250,11 @@ function checkEntries(title, author, numPages){
 }
 
 
-function test(){
+function manageInfoCard(){
 
-//window.addEventListener("mouseover", ()=>{
-  //  if(bookArr.length >= 1){    
-    
-            
+    //info elements
     const infoCards = document.querySelectorAll(".info_btns");
+    const trashBtn = document.querySelector(".trash");
 
     infoCards.forEach(infoCard => infoCard.addEventListener("mouseover", ()=>{
         infoCard.style.opacity = "1";
@@ -247,27 +262,65 @@ function test(){
 
     infoCards.forEach(infoCard => infoCard.addEventListener("mouseout", ()=>{
         infoCard.style.opacity = "0";
-    }));        
+    }));       
     
 
-    infoCards.forEach(infoCard => infoCard.addEventListener("click", (e)=>{
+    let hasClicked = false;
+    infoCards.forEach(infoCard => infoCard.addEventListener("click", clickHandle));
+
+    function clickHandle(){
         
-
-    })); 
-
-    window.addEventListener("click", (e)=>{
-        console.log(e.target.parentNode);
-        if(e.target.parentNode.classList[0] == "info_btns" || e.target.parentNode.classList[0] == "book_card"){
-            infoCards.forEach(infoCard => infoCard.style.opacity = "1");
-        }else if(e.target.parentNode.classList[0] != "info_btns" || e.target.parentNode.classList[0] != "book_card"){
-            infoCards.forEach(infoCard => infoCard.style.opacity = "0");
-
+        infoCards.forEach(infoCard => infoCard.style.opacity = "0");
+        if(!hasClicked){
+            this.style.opacity = "1";
+            hasClicked = true;
+        }else if(hasClicked){
+            this.style.opacity = "0";
+            hasClicked = false;
         }
-    });
-   
+        window.addEventListener("click", (e)=>{
+            if(e.target.parentNode.classList[0] != "info_btns" && e.target.parentNode.classList[0] != "book_card"){
+                this.style.opacity = "0";
+                hasClicked = false;
 
-// }
-//});
+            }
+        });
+    }
+
+    trashBtn.addEventListener("click", (e)=>{
+        bookContainer.removeChild(e.target.parentNode.parentNode);
+    });
+
+
+}
+
+function randomNum(min, max){
+    var x = Math.floor(Math.random() * (max - min) + min);
+    return x;
+}
+
+myArr = fillArr(9999);
+function generateBookId(){
+    const min = 1111;
+
+    let randomIndex = randomNum(min, myArr.length-1);
+    let randomId = myArr[randomIndex];
+    myArr.splice(randomIndex, 1);
+    
+    return randomId;
+   
+}
+
+
+
+function fillArr(max){
+    let myArr = [];
+
+    for(let i = 1111; i <= max; i++){
+        myArr.push(i);
+    }
+
+    return myArr;
 }
 
 
@@ -275,3 +328,21 @@ function test(){
 
 
 
+
+/*
+
+function checkId(x, bookArr){
+    let found = false;
+
+    for(let i = 0; i <= bookArr.length; i++){
+        if(bookArr[i].bookId == x){
+            found = true;
+            return found;
+        }
+    }
+    if(!found){
+        return found;
+    }
+}
+
+*/
