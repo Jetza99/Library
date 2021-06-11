@@ -32,6 +32,8 @@ nav{
     margin-left: 8px;
     color: rgb(65, 65, 65);
 
+
+
 }
 
 .nav_item{
@@ -57,6 +59,33 @@ nav{
     font-size: 40px;
     color: rgb(65, 65, 65);
     vertical-align: middle;
+
+}
+
+.test{
+    display: inline-block; 
+    position: absolute;
+    font-family: 'Raleway', sans-serif;
+    font-size: 35px;
+    text-align: center;
+    color: rgb(65, 65, 65);
+    font-weight: normal;
+    right: 0;
+    margin: 0 20% 0 0;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.test:hover{
+    cursor: pointer;
+    color: #f12711;
+    color: -webkit-linear-gradient(to top, #f12711, #f5af19);
+    color: linear-gradient(to top, #f12711, #f5af19);
+
+}
+
+.option2{
+    margin: 0 5% 0 0;
 
 }
 
@@ -195,11 +224,32 @@ nav{
       filter: drop-shadow(0px 0px 10px #2b2b2b);
   }
 
+  .fa-check-circle{
+    position: absolute;
+    left: 0;
+    padding: 10%;
+    font-size: 25px;
+    color: #34b233;
+  }
+
+  .fa-times-circle{
+    position: absolute;
+    left: 0;
+    padding: 10%;
+    font-size: 25px;
+    color: #ff3333;
+  }
+
   .add_book{
       background-color: rgb(235, 235, 235);
       border: 4px dashed #C2C2C2;
       height: 32vh;
       padding-bottom: 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
   }
 
 
@@ -217,8 +267,9 @@ nav{
       text-align: center;
       color: #969696;
       font-size: 45px;
-      margin: 0;
-
+      margin-top: 0;
+      align-self: center;
+      
   }
 
 
@@ -233,24 +284,24 @@ nav{
       overflow: hidden;
   }
 
+  .form_book_info{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 10%);
+    width: 90%;
+    padding: 15% 10% 5% 10%;
+    background-color: white;
+    box-shadow: 0px 0px 16px -6px rgba(20,20,20,1);
+
+    animation: bring-forward 0.2s forwards;
+}
+
   @keyframes change-bg {
       to{
         background-color: rgba(0, 0, 0, 0.253);
       }
   }
-
-  .form_book_info{
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translate(-50%, 10%);
-      width: 90%;
-      padding: 15% 10% 5% 10%;
-      background-color: white;
-      box-shadow: 0px 0px 16px -6px rgba(20,20,20,1);
-
-      animation: bring-forward 0.2s forwards;
-}
 
 
 @keyframes bring-forward {
@@ -486,8 +537,8 @@ nav{
   }
 
   .book_cover{
-      width: 95%;
-      height: 95%;
+      width: 100%;
+      height: 00%;
       z-index: 0;
       position: absolute;
   }
@@ -501,6 +552,84 @@ nav{
 
   }
 
+
+
+  /* MEDIA QUERIES */
+
   
+@media only screen and (min-width : 600px) {
+    .book_container{
+      
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+        padding: 20px;
+        margin-top: 3vh;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .add_book{
+
+        height: 300px;
+        padding-bottom: 10%;
+
+        
+    }
+    .book_container{
+        display: grid;
+
+        grid-template-columns: 1fr 1fr 1fr;
+
+        grid-row-gap: 40px;
+        grid-column-gap: 20px;
+        padding: 20px 100px;
+        margin-top: 3vh;
+    }
+    .book_card{
+        background-color: rgb(226, 226, 226);
+        height: 300px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .add_book{
+
+        height: 300px;
+        padding-bottom: 10%;
+        
+    }
+    .book_container{
+        display: grid;
+        /*grid-template-columns: repeat(auto-fit, 200px);*/
+        grid-template-columns: repeat(auto-fill, 200px);
+
+        grid-row-gap: 40px;
+        grid-column-gap: 20px;
+        padding: 20px 25%;
+        margin-top: 3vh;
+    }
+    .book_card{
+        height: 300px;
+
+    }
+    .form_book_info{
+        width: 500px;
+        padding: 5% 5% 2% 5%;
+        }
+
+    #Site_Id{
+        font-size: 60px;
+    }
+    .fa-book-open{
+        font-size: 55px;
+    }
+}
+
+
 
   

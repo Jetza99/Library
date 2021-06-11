@@ -19,12 +19,13 @@
     <body>
         
 
- <header>
+<header>
      
             <nav>
                 <div class="nav_item logo">
-                    <i class="fas fa-book-open"></i>  <span id="Site_Id">myLibrary </span>
-              
+                        <i class="fas fa-book-open"></i>  <span id="Site_Id">myLibrary</span>
+
+
                 </div>
                 <div class="nav_item menu_icon">
                     <i class="fas fa-bars"></i>
@@ -33,7 +34,6 @@
     
             
 </header>
-
 
 <main>
     
@@ -45,13 +45,15 @@
 
 
         <!--
-              <div class="book_card">
+   <div class="book_card">
             <div class="info_btns">
                 <i class="fas fa-info-circle info"></i>
                 <i class="fas fa-trash-alt trash"></i>
             </div>
         </div>
+        
         -->
+           
 
         
       
@@ -66,26 +68,26 @@
             <i class="fas fa-times close"></i>
 
             <div class="input_container">
-                <label class="placeholder_style book_title_placeholder" for="book title">Book Title</label>
+                <label class="placeholder_style book_title_placeholder text_label" for="book title">Book Title</label>
                 <input type="text" id="title" class="input_box" name="book_title_placeholder" autocomplete="off" 
                 onfocus="inputFocus()" onblur="inputBlur()" required><br>
             </div>
     
     
             <div class="input_container">
-                <label class="placeholder_style author_placeholder" for="author">Author</label>
+                <label class="placeholder_style author_placeholder text_label" for="author">Author</label>
                 <input type="text" id="author" class="input_box" name="author_placeholder" autocomplete="off" 
                 onfocus="inputFocus()" onblur="inputBlur()" required><br>
             </div>
     
             <div class="input_container">
-                <label class="placeholder_style num_pages_placeholder" for="author">Number Of Pages</label>
+                <label class="placeholder_style num_pages_placeholder text_label" for="author">Number Of Pages</label>
                 <input type="text" id="num-pages" class="input_box" name="num_pages_placeholder" autocomplete="off" 
                 onfocus="inputFocus()" onblur="inputBlur()" required><br>
             </div>
     
             <div class="input_container">
-                <label class="placeholder_style book_cover_placeholder" for="author">Book Cover Link 
+                <label class="placeholder_style book_cover_placeholder text_label" for="author">Book Cover Link 
                     <span id="optional">(optional)</span></label>
                 <input type="text" id="cover-link" class="input_box book_cover_box" name="book_cover_placeholder" autocomplete="off" 
                 onfocus="inputFocus()" onblur="inputBlur()"><br>
@@ -118,8 +120,7 @@
     
 </main>
 
-
-
+    
 
         
         <script src="app.js" async defer></script>
