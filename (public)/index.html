@@ -15,6 +15,33 @@
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">         <link rel="stylesheet" href="style.css">
         <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
         <script src="https://kit.fontawesome.com/f91b009431.js" crossorigin="anonymous"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyA2t91ygVbclAoKCYFoC-PnrUFjqVHpasU",
+    authDomain: "library-83179.firebaseapp.com",
+    projectId: "library-83179",
+    storageBucket: "library-83179.appspot.com",
+    messagingSenderId: "848662209629",
+    appId: "1:848662209629:web:01e8b2aaefb22b0ff059b4",
+    measurementId: "G-DBKZDDLP17"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
     </head>
     <body>
         
@@ -36,7 +63,10 @@
 </header>
 
 <main>
-    
+
+    <div class="clear_div">
+        <input type="button" class="clear_lib" value="Clear Library">
+    </div>
     <div class="book_container">
         <div class="add_book">
             <h3 class="add_book_text">Add A Book</h3>

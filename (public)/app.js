@@ -3,6 +3,7 @@ const body = document.querySelector("body");
 const header = document.querySelector("header");
 const main = document.querySelector("main");
 const nav = document.querySelector("nav");
+const clearBtn = document.querySelector(".clear_lib");
 
 //hamburger menu elements
 const menuBtn = document.querySelector(".menu_icon");
@@ -35,8 +36,12 @@ const addBookText = document.querySelector(".add_book_text");
 const plusCircle = document.querySelector(".plus_circle");
 const closeBtn = document.querySelector(".close");
 const testingBtn = document.querySelector(".info");
+const emptyBookIcon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjQ1OS4zMTlweCIgaGVpZ2h0PSI0NTkuMzE5cHgiIHZpZXdCb3g9IjAgMCA0NTkuMzE5IDQ1OS4zMTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ1OS4zMTkgNDU5LjMxOTsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZD0iTTk0LjkyNCwzNjYuNjc0aDMxMi44NzRjMC45NTgsMCwxLjg4Ni0wLjEzNiwyLjc3OC0wLjM0OWMwLjA3MSwwLDAuMTMsMC4wMTIsMC4yMDEsMC4wMTINCgkJYzYuNjc5LDAsMTIuMTA1LTUuNDIsMTIuMTA1LTEyLjEwNFYxMi4xMDVDNDIyLjg4Myw1LjQyMyw0MTcuNDU2LDAsNDEwLjc3NywwaC0yLjk1NUgxMTQuMjg0SDk0Ljk0MQ0KCQljLTMyLjIyLDAtNTguNDI4LDI2LjIxNC01OC40MjgsNTguNDI1YzAsMC40MzIsMC4wODUsMC44NDIsMC4xMjcsMS4yNTljLTAuMDQyLDI5Ljc1NS0wLjQxMSwzMDMuMTY2LTAuMDQyLDMzOS4xMDkNCgkJYy0wLjAyMywwLjcwMy0wLjEwOSwxLjM4OS0wLjEwOSwyLjA5OWMwLDMwLjk3MywyNC4yNTIsNTYuMzI5LDU0Ljc1Nyw1OC4yNDVjMC42MTIsMC4wOTQsMS4yMTIsMC4xODMsMS44NDcsMC4xODNoMzE3LjY4Mw0KCQljNi42NzksMCwxMi4xMDUtNS40MiwxMi4xMDUtMTIuMTA1di00NS41NjVjMC02LjY4LTUuNDI3LTEyLjEwNS0xMi4xMDUtMTIuMTA1cy0xMi4xMDUsNS40MjYtMTIuMTA1LDEyLjEwNXYzMy40NjFIOTQuOTI0DQoJCWMtMTguMzk1LDAtMzMuNDExLTE0LjYwNS0zNC4xNDktMzIuODE3YzAuMDE4LTAuMzI1LDAuMDc3LTAuNjMyLDAuMDcxLTAuOTYzYy0wLjAxMi0wLjUzMi0wLjAzLTEuMzU5LTAuMDQyLTIuNDU5DQoJCUM2MS44NjIsMzgwLjk0OCw3Ni43MzksMzY2LjY3NCw5NC45MjQsMzY2LjY3NHogTTEwMy4xNzgsNTguNDI1YzAtNi42ODIsNS40MjMtMTIuMTA1LDEyLjEwNS0xMi4xMDVzMTIuMTA1LDUuNDIzLDEyLjEwNSwxMi4xMDUNCgkJVjMwNC4zMWMwLDYuNjc5LTUuNDIzLDEyLjEwNS0xMi4xMDUsMTIuMTA1cy0xMi4xMDUtNS40MjctMTIuMTA1LTEyLjEwNVY1OC40MjV6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==';
 
 
+//firebase
+const auth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider();
 
 
 //variables
@@ -44,6 +49,8 @@ let selectedInput = "";
 let selectedLabel;
 let bookArr = [];
 let emptyCover = true;
+let localBtn;
+let cloudBtn;
 
 
 
@@ -55,11 +62,16 @@ if(window.screen.width > 1024){
     const firstItem = document.createElement("h6");
     const secondItem = document.createElement("h6");
 
-    firstItem.classList.add("test");
+    firstItem.classList.add("navbar_option");
+    firstItem.classList.add("navbar_option_active");
+    firstItem.setAttribute("id", "local")
+
     firstItem.textContent = "LOCAL";
 
-    secondItem.classList.add("test");
+
+    secondItem.classList.add("navbar_option");
     secondItem.classList.add("option2");
+    secondItem.setAttribute("id", "cloud");
 
 
     secondItem.textContent = "CLOUD";
@@ -67,8 +79,78 @@ if(window.screen.width > 1024){
     nav.appendChild(firstItem);
     nav.appendChild(secondItem);
 
-
 }
+
+
+if(localStorage.length > 0){
+    let books = JSON.parse(localStorage.getItem("books"));
+    bookArr = books;
+    if(books == []){
+        localStorage.clear();
+    }else if(bookArr.length > 0){
+        for(let i = 0; i < bookArr.length; i++){
+
+            let infoCard = document.createElement("div");
+            let infoIcon = document.createElement("i");
+            let trashIcon = document.createElement("i");
+        
+            let bookCard = document.createElement("div");
+            let bookCover = document.createElement("img");
+            if(bookArr[i].coverLink){
+                bookCover.setAttribute("src", `${bookArr[i].coverLink}`);
+                bookCover.classList.add("book_cover");
+                emptyCover = false;
+        
+            }else{
+                bookCover.setAttribute("src", `${emptyBookIcon}`);
+                bookCover.classList.add("empty_book_cover");
+            }
+            infoCard.classList.add("info_btns");
+        
+            infoIcon.classList.add("fas");
+            infoIcon.classList.add("fa-info-circle");
+            infoIcon.classList.add("info");
+            infoIcon.classList.add(`${bookArr[i].bookId}`);
+        
+        
+            trashIcon.classList.add("fas");
+            trashIcon.classList.add("fa-trash-alt");
+            trashIcon.classList.add("trash");
+            trashIcon.classList.add(`${bookArr[i].bookId}`);
+    
+    
+            if(bookArr[i].hasRead){
+                let checkIcon = document.createElement("i");
+                checkIcon.classList.add("fas");
+                checkIcon.classList.add("fa-check-circle");
+                infoCard.appendChild(checkIcon);
+            }else if(!bookArr[i].hasRead){
+                let timesIcon = document.createElement("i");
+                timesIcon.classList.add("fas");
+                timesIcon.classList.add("fa-times-circle");
+                infoCard.appendChild(timesIcon);
+            }
+    
+            bookCard.classList.add("book_card");
+        
+        
+            infoCard.appendChild(infoIcon);
+            infoCard.appendChild(trashIcon);
+            bookCard.appendChild(infoCard);
+            bookCard.appendChild(bookCover);
+            bookContainer.insertBefore(bookCard, bookContainer.firstElementChild.nextSibling);   
+         }
+         manageInfoCard();
+    }
+    
+}
+
+clearBtn.addEventListener("click", ()=>{
+    const bookCards = document.querySelectorAll(".book_card");
+    bookCards.forEach(bookCard => bookCard.remove());
+    bookArr = [];
+    localStorage.clear();  
+});
 
 
 
@@ -80,12 +162,17 @@ menuBtn.addEventListener("click", () => {
     menu.classList.add("animate_menu_down");
     menuOptions.classList.add("menu_options");      
     option1.classList.add("menu_option");  
-    option2.classList.add("menu_option");      
+    option1.setAttribute("id", "cloud");
+    option2.classList.add("menu_option");   
+    option2.setAttribute("id", "local");
+   
     arrowUp.classList.add("fas");
     arrowUp.classList.add("fa-arrow-up");                        
     
     option1.textContent = "CLOUD";
     option2.textContent = "LOCAL";
+
+
                                  
 
     body.removeChild(header);
@@ -96,6 +183,8 @@ menuBtn.addEventListener("click", () => {
     menu.appendChild(menuOptions);
     menuOptions.appendChild(option1);
     menuOptions.appendChild(option2);
+
+
 });
 
 
@@ -113,6 +202,57 @@ arrowUp.addEventListener("click", () => {
     }, 250);
 
 });
+
+localBtn = document.querySelector("#local");
+cloudBtn = document.querySelector("#cloud");
+
+if(!localBtn && !cloudBtn){
+    localBtn = option2;
+    cloudBtn = option1;
+}
+
+
+//sign in
+cloudBtn.addEventListener("click", ()=>{
+    const firstItem = document.querySelector("#local");
+    firstItem.classList.remove("navbar_option_active");
+
+
+    auth.signInWithPopup(provider);
+
+
+
+    const secondItem = document.querySelector("#cloud");
+    secondItem.classList.add("navbar_option_active");
+});
+
+//sign out
+localBtn.addEventListener("click", ()=>{
+    const secondItem = document.querySelector("#cloud");
+    secondItem.classList.remove("navbar_option_active");
+
+    auth.signOut();
+
+    const firstItem = document.querySelector("#local");
+    firstItem.classList.add("navbar_option_active");
+
+});
+
+auth.onAuthStateChanged(user => {
+    if(user){
+        //signed in
+        //show books stored in firebase
+        console.log("signed in");
+
+    }else {
+        //not signed in
+        //remove cloud-stored books and replace with local
+        console.log("signed out");
+
+
+    }
+});
+
 
 
 
@@ -202,7 +342,6 @@ closeBtn.addEventListener("click", ()=>{
 
 //ADD BOOK INFORMATION INTO OBJECT AND INSERT IT INTO GRID WITH IMG
 function addingBookHandle(){
-   const emptyBookIcon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjQ1OS4zMTlweCIgaGVpZ2h0PSI0NTkuMzE5cHgiIHZpZXdCb3g9IjAgMCA0NTkuMzE5IDQ1OS4zMTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ1OS4zMTkgNDU5LjMxOTsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZD0iTTk0LjkyNCwzNjYuNjc0aDMxMi44NzRjMC45NTgsMCwxLjg4Ni0wLjEzNiwyLjc3OC0wLjM0OWMwLjA3MSwwLDAuMTMsMC4wMTIsMC4yMDEsMC4wMTINCgkJYzYuNjc5LDAsMTIuMTA1LTUuNDIsMTIuMTA1LTEyLjEwNFYxMi4xMDVDNDIyLjg4Myw1LjQyMyw0MTcuNDU2LDAsNDEwLjc3NywwaC0yLjk1NUgxMTQuMjg0SDk0Ljk0MQ0KCQljLTMyLjIyLDAtNTguNDI4LDI2LjIxNC01OC40MjgsNTguNDI1YzAsMC40MzIsMC4wODUsMC44NDIsMC4xMjcsMS4yNTljLTAuMDQyLDI5Ljc1NS0wLjQxMSwzMDMuMTY2LTAuMDQyLDMzOS4xMDkNCgkJYy0wLjAyMywwLjcwMy0wLjEwOSwxLjM4OS0wLjEwOSwyLjA5OWMwLDMwLjk3MywyNC4yNTIsNTYuMzI5LDU0Ljc1Nyw1OC4yNDVjMC42MTIsMC4wOTQsMS4yMTIsMC4xODMsMS44NDcsMC4xODNoMzE3LjY4Mw0KCQljNi42NzksMCwxMi4xMDUtNS40MiwxMi4xMDUtMTIuMTA1di00NS41NjVjMC02LjY4LTUuNDI3LTEyLjEwNS0xMi4xMDUtMTIuMTA1cy0xMi4xMDUsNS40MjYtMTIuMTA1LDEyLjEwNXYzMy40NjFIOTQuOTI0DQoJCWMtMTguMzk1LDAtMzMuNDExLTE0LjYwNS0zNC4xNDktMzIuODE3YzAuMDE4LTAuMzI1LDAuMDc3LTAuNjMyLDAuMDcxLTAuOTYzYy0wLjAxMi0wLjUzMi0wLjAzLTEuMzU5LTAuMDQyLTIuNDU5DQoJCUM2MS44NjIsMzgwLjk0OCw3Ni43MzksMzY2LjY3NCw5NC45MjQsMzY2LjY3NHogTTEwMy4xNzgsNTguNDI1YzAtNi42ODIsNS40MjMtMTIuMTA1LDEyLjEwNS0xMi4xMDVzMTIuMTA1LDUuNDIzLDEyLjEwNSwxMi4xMDUNCgkJVjMwNC4zMWMwLDYuNjc5LTUuNDIzLDEyLjEwNS0xMi4xMDUsMTIuMTA1cy0xMi4xMDUtNS40MjctMTIuMTA1LTEyLjEwNVY1OC40MjV6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==';
         let book;
         let title = document.querySelector("#title").value;
         let author = document.querySelector("#author").value;
@@ -214,6 +353,7 @@ function addingBookHandle(){
        /*if(checkEntries(title, author, numPages)){*/
             book = new Book(title, author, numPages, coverLink, hasRead, bookId);
             bookArr.push(book);
+            localStorage.setItem("books", JSON.stringify(bookArr));
     
      /*  }*/
     
@@ -361,6 +501,7 @@ function manageInfoCard(){
     trashBtn.addEventListener("click", (e)=>{
         bookChosen = lookForBook(bookArr, e.target.classList[3]);
         bookArr.splice(bookArr.indexOf(bookChosen), 1);
+        localStorage.setItem("books", JSON.stringify(bookArr));
         bookContainer.removeChild(e.target.parentNode.parentNode);
     });
 
@@ -432,6 +573,8 @@ function manageInfoCard(){
              book = new Book(title, author, numPages, coverLink, hasRead, bookId);
              bookArr.push(book);
              bookArr.splice(bookArr.indexOf(bookChosen), 1);
+             localStorage.setItem("books", JSON.stringify(bookArr));
+
 
             /*  }*/
 
@@ -457,6 +600,7 @@ function manageInfoCard(){
                 }
 
             }
+
 
             formModal.style.display = "none";
             body.style.position = "";
