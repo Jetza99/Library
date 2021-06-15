@@ -42,6 +42,7 @@ const emptyBookIcon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmN
 //firebase
 const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
+const db = firebase.firestore();
 
 
 //variables
@@ -51,6 +52,8 @@ let bookArr = [];
 let emptyCover = true;
 let localBtn;
 let cloudBtn;
+let booksRef;
+let unsubscribe;
 
 
 
@@ -240,10 +243,36 @@ localBtn.addEventListener("click", ()=>{
 
 auth.onAuthStateChanged(user => {
     if(user){
+        booksRef = db.collection("books");
         //signed in
         //show books stored in firebase
-        console.log("signed in");
 
+
+
+
+
+        //adding book to firestore db
+        addBookBtn.addEventListener("click", ()=>{
+
+            addingBookHandle();
+
+            for(let i = bookArr.length - 1; i < bookArr.length; i++){
+                booksRef.doc(`${bookArr[i].bookId}`).set({
+                    uid: user.uid,
+                    title: bookArr[i].title,
+                    author: bookArr[i].author,
+                    numPages: bookArr[i].numPages,
+                    coverLink: bookArr[i].coverLink,
+                    hasRead: bookArr[i].hasRead,
+                    bookId: bookArr[i].bookId
+                });
+            }
+
+         
+        });
+        
+        
+        
     }else {
         //not signed in
         //remove cloud-stored books and replace with local
@@ -399,10 +428,6 @@ function addingBookHandle(){
             timesIcon.classList.add("fa-times-circle");
             infoCard.appendChild(timesIcon);
         }
-
-
-
-    
     
         bookCard.classList.add("book_card");
     
